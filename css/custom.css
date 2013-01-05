@@ -1,9 +1,62 @@
+html, body {
+	height: 100%;
+}
 body {
 	padding: 0px;
 	margin: 0px;
 	overflow: hidden;
 }
+header#header {
+	opacity: 0;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 100;
+	-webkit-transition: all .3s ease;
+	text-align: center;
+}
+header#header:hover {
+	opacity: 1;
+}
+#logo {
+	font-size: 1em;
+	display: inline-block;
+	color: inherit;
+	text-decoration: none;
+}
 .flexslider {
-	margin: 0px;
+	margin: 0 auto;
+	position: absolute;
+	top: 50%;
+	margin-top: -242px;
+	left: 50%;
+	margin-left: -300px;
+	width: 600px;
+	height: 484px;
 	border: none;
+}
+.flex-viewport {
+	width: 600px;
+	margin: 0 auto;
+}
+.slides {
+	margin: 0 auto;
+}
+.slides img {
+	width: 100%;
+	height: auto;
+}
+.flex-direction-nav .flex-next {
+	right: 0px;
+	background: transparent url('../images/arrow-right.png') no-repeat center center;
+}
+.flex-direction-nav .flex-prev {
+	left: 0px;
+	background: transparent url('../images/arrow-left.png') no-repeat center center;
+}
+.flex-prev:hover {
+	opacity: .5;
+}
+.flex-next:hover {
+	opacity: .5;
 }

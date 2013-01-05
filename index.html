@@ -14,22 +14,31 @@
   
 </head>
 <body class="loading">
+  <header id="header">
+    <a href="#" id="logo">Robert Pecina</a>
+  </header>
 	<div id="main" role="main">
       <section class="slider">
         <div class="flexslider">
           <ul class="slides">
             <li>
-  	    	    <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
+  	    	    <img src="images/00.jpg" />
   	    		</li>
   	    		<li>
-  	    	    <img src="images/kitchen_adventurer_lemon.jpg" />
+  	    	    <img src="images/01.jpg" />
   	    		</li>
   	    		<li>
-  	    	    <img src="images/kitchen_adventurer_donut.jpg" />
+  	    	    <img src="images/02.jpg" />
   	    		</li>
   	    		<li>
-  	    	    <img src="images/kitchen_adventurer_caramel.jpg" />
+  	    	    <img src="images/03.jpg" />
   	    		</li>
+            <li>
+              <img src="images/04.jpg" />
+            </li>
+            <li>
+              <img src="images/05.jpg" />
+            </li>
           </ul>
         </div>
       </section>
@@ -43,16 +52,38 @@
   <script defer src="js/jquery.flexslider.js"></script>
   
   <script type="text/javascript">
-    $(function(){
-      SyntaxHighlighter.all();
+    var resize = function() {
+      var w = $(document).width();
+      var h = $(document).height();
+      var $slides = $('.slides');
+      var $next = $(".flex-direction-nav .flex-next");
+      var $previous = $(".flex-direction-nav .flex-prev");
+      var $header = $('#header');
+      var $logo = $header.find('#logo');
+      var linkPos = (w/2) + ($slides.width()/2);
+      var headerHeight = (h/2) - ($slides.height()/2);
+      var logoMarginTop = (headerHeight/2) - ($logo.height()/2);
+      
+      $next.css({'left': linkPos});
+      $previous.css({'right': linkPos});
+      $header.css({'height': headerHeight});
+      console.log($logo.height());
+      console.log($header.height());
+      
+      $logo.css({'margin-top': logoMarginTop});
+    }
+    $(window).resize(function(){
+      resize();
     });
     $(window).load(function(){
       $('.flexslider').flexslider({
-        animation: "slide",
+        animation: "fade",
         controlNav: false,
-        directionNav: false, 
+        directionNav: true, 
         start: function(slider){
           $('body').removeClass('loading');
+          $(".flex-direction-nav").appendTo("#main");
+          resize();
         }
       });
     });
